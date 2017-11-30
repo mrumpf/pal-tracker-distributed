@@ -84,6 +84,19 @@ jobs:
     params:
       file: version/number
 
+- name: migrate
+  plan:
+  - get: pal-tracker
+    passed: [build]
+  - task: run migration
+    file: pal-tracker/ci/migrate.yml
+    params:
+      CF_USERNAME: {{cf-username}}
+      CF_PASSWORD: {{cf-password}}
+      CF_DATABASE: {{cf-database}}
+      CF_DATABASE_USER: {{cf-database-user}}
+      CF_DATABASE_PASSWORD: {{cf-database-password}}
+
 - name: deploy-allocations
   plan:
   - get: pal-tracker
