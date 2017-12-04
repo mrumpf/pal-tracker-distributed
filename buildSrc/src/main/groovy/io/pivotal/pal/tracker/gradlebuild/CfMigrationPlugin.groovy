@@ -71,7 +71,9 @@ class CfMigrationPlugin implements Plugin<Project> {
 
     private static def getMysqlCredentials(cfAppName) {
         def appGuid = execute("cf app $cfAppName --guid").trim()
+        println("###" + appGuid)
         def envResponse = execute("cf curl /v2/apps/$appGuid/env")
+        println("###" + envResponse)
         def envJson = new JsonSlurper().parseText(envResponse)
         def vcapServices = envJson["system_env_json"]?.getAt("VCAP_SERVICES")
 
