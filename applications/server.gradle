@@ -19,6 +19,10 @@ dependencies {
     compile "mysql:mysql-connector-java:$mysqlVersion"
     compile "ch.qos.logback:logback-classic:1.1.11"
 
+    compile "org.springframework.cloud:spring-cloud-starter-sleuth"
+    compile "org.springframework.cloud:spring-cloud-sleuth-stream"
+    compile "org.springframework.cloud:spring-cloud-starter-stream-rabbit"
+
     testCompile project(":components:test-support")
 }
 
